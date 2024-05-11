@@ -1,0 +1,15 @@
+(test
+ (name index)
+ (libraries
+  alcotest
+  opensearch
+  eio
+  eio.mock
+  eio_main
+  logs.fmt
+  tls-eio
+  mirage-crypto-rng-eio
+  fmt)
+ (package opensearch)
+ (preprocess
+  (pps ppx_here)))

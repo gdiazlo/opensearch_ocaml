@@ -1,0 +1,15 @@
+(executable
+ (public_name osc)
+ (name main)
+ (libraries
+  opensearch
+  eio
+  eio_main
+  eio_posix
+  logs.fmt
+  logs.threaded
+  tls-eio
+  mirage-crypto-rng-eio
+  fmt)
+ (preprocess
+  (pps ppx_yojson_conv)))

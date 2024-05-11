@@ -1,0 +1,15 @@
+# acme guide
+
+
+# Format opensearch documentation into OCAML function helpers
+ Edit ,s/(.+)	(.+)	(.*)/\(\*\* \3 \*\)\nlet with_\1 \2 params = \(\"\1\", \2) :: params\n/g
+ Edit ,s/Enum/str/g
+ Edit ,s/String/str/g
+ Edit ,s/Boolean/b/g
+ Edit ,s/b\)/Param.bool_to_string b\)/g
+ Edit ,s/Integer/i/g
+ Edit ,s/i\)/Param.int_to_string b\)/
+ Edit ,s/Time/d/g
+ Edit ,s/d\)/Duration.to_string d\)/
+ Edit ,x/\(\*\*.+\*\)/ | fmt
+

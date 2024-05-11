@@ -1,0 +1,8 @@
+(library
+ (name opensearch)
+ (public_name opensearch)
+ (libraries yojson cohttp cohttp-eio tls-eio)
+ (preprocess
+  (pps ppx_let)))
+
+(include_subdirs qualified)
