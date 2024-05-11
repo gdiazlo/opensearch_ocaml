@@ -15,39 +15,65 @@ struct
     Format.printf "%a\n" Uri.pp (Uri.with_path (List.hd C.config.hosts) req.path)
   ;;
 
+  let get_error_body body = Eio.Buf_read.(parse_exn take_all) body ~max_size:max_int
+
   let get sw headers uri =
     let resp, body = Cohttp_eio.Client.get ~headers ~sw C.client uri in
     if Http.Status.to_int resp.status < 399
     then Ok body
-    else Error (Fmt.str "Unexpected HTTP status: %a" Http.Status.pp resp.status)
+    else
+      Error
+        (Fmt.str
+           "Unexpected HTTP status: %a\n%s\n"
+           Http.Status.pp
+           resp.status
+           (get_error_body body))
   ;;
 
   let put sw headers uri body =
     let resp, body = Cohttp_eio.Client.put ~sw ~body ~headers C.client uri in
     if Http.Status.to_int resp.status < 399
     then Ok body
-    else Error (Fmt.str "Unexpected HTTP status: %a" Http.Status.pp resp.status)
+    else
+      Error
+        (Fmt.str
+           "Unexpected HTTP status: %a\n%s\n"
+           Http.Status.pp
+           resp.status
+           (get_error_body body))
   ;;
 
   let post sw headers uri body =
     let resp, body = Cohttp_eio.Client.post ~sw ~body ~headers C.client uri in
     if Http.Status.to_int resp.status < 399
     then Ok body
-    else Error (Fmt.str "Unexpected HTTP status: %a" Http.Status.pp resp.status)
+    else
+      Error
+        (Fmt.str
+           "Unexpected HTTP status: %a\n%s\n"
+           Http.Status.pp
+           resp.status
+           (get_error_body body))
   ;;
 
   let delete sw headers uri =
     let resp, body = Cohttp_eio.Client.delete ~sw ~headers C.client uri in
     if Http.Status.to_int resp.status < 399
     then Ok body
-    else Error (Fmt.str "Unexpected HTTP status: %a" Http.Status.pp resp.status)
+    else
+      Error
+        (Fmt.str
+           "Unexpected HTTP status: %a\n%s\n"
+           Http.Status.pp
+           resp.status
+           (get_error_body body))
   ;;
 
   let head sw headers uri =
     let resp = Cohttp_eio.Client.head ~sw ~headers C.client uri in
     if Http.Status.to_int resp.status < 399
     then Ok (Cohttp_eio.Body.of_string "")
-    else Error (Fmt.str "Unexpected HTTP status: %a" Http.Status.pp resp.status)
+    else Error (Fmt.str "Unexpected HTTP status: %a\n" Http.Status.pp resp.status)
   ;;
 
   let do_req sw ?body req =
