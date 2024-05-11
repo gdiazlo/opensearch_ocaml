@@ -12,9 +12,9 @@ This client is unreleased as it is a work in progress.
 
 The client is built using common Ocaml community libraries:
 
-- (Eio)[https://github.com/ocaml-multicore/eio]
-- (Cohttp)[https://github.com/mirage/ocaml-cohttp/]
-- (Yojson)[https://github.com/ocaml-community/yojson]
+- [Eio](https://github.com/ocaml-multicore/eio)
+- [Cohttp](https://github.com/mirage/ocaml-cohttp/)
+- [Yojson](https://github.com/ocaml-community/yojson)
 
 ## Usage
 
