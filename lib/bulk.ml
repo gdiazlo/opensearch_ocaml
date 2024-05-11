@@ -3,7 +3,7 @@ type t = string list
 exception InvalidDocumentType of string
 
 let empty = []
-let to_body bulk = String.concat "\n" bulk
+let to_body bulk = Cohttp_eio.Body.of_string (String.concat "\n" bulk ^ "\n")
 let init = List.init
 
 (** Creates a document if it doesn’t already exist and returns an error
@@ -14,7 +14,7 @@ let with_create index ?id doc =
     match id with
     | Some id ->
       `Assoc [ "create", `Assoc [ "_index", `String index; "_id", `String id ] ]
-    | None -> `Assoc [ "create", `Assoc [ "index", `String index ] ]
+    | None -> `Assoc [ "create", `Assoc [ "_index", `String index ] ]
   in
   Fmt.str "%s\n%s" (cmd |> to_string) (doc |> to_string)
 ;;

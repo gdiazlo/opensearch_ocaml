@@ -7,12 +7,14 @@ let () =
 ;;
 *)
 
-let test_case name f do_req =
+type requester = ?body:Cohttp_eio.Body.t -> Req.t -> (Cohttp_eio.Body.t, string) result
+
+let test_case name f (do_req : requester) =
   let f () = f do_req in
   Alcotest.test_case name `Quick f
 ;;
 
-let index_create do_req =
+let index_create (do_req : requester) =
   let params = Param.empty in
   let res = do_req (Api.Index.Create.put "create_index_bulk_test" params) in
   let _ =
@@ -23,7 +25,7 @@ let index_create do_req =
   ()
 ;;
 
-let index_exists do_req =
+let index_exists (do_req : requester) =
   let params = Param.empty in
   let res = do_req (Api.Index.Exists.head "create_index_bulk_test" params) in
   let _ =
@@ -34,8 +36,7 @@ let index_exists do_req =
   ()
 ;;
 
-let bulk_create do_req =
-  let open Yojson.Safe in
+let bulk_create (do_req : requester) =
   let params = Param.empty in
   let body =
     Bulk.to_body
@@ -51,7 +52,7 @@ let bulk_create do_req =
   ()
 ;;
 
-let index_delete do_req =
+let index_delete (do_req : requester) =
   let params = Param.empty in
   let res = do_req (Api.Index.Delete.delete "create_index_bulk_test" params) in
   let _ =
