@@ -8,8 +8,9 @@
  Edit ,s/Boolean/b/g
  Edit ,s/b\)/Param.bool_to_string b\)/g
  Edit ,s/Integer/i/g
- Edit ,s/i\)/Param.int_to_string b\)/
+ Edit ,s/i\)/Param.int_to_string i\)/g
  Edit ,s/Time/d/g
- Edit ,s/d\)/Duration.to_string d\)/
+ Edit ,s/d\)/Duration.to_string d\)/g
  Edit ,x/\(\*\*.+\*\)/ | fmt
+ Edit ,s/	No//g
 
