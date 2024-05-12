@@ -48,3 +48,20 @@
  (package opensearch)
  (preprocess
   (pps ppx_here)))
+
+(test
+ (name search_templates)
+ (modules search_templates)
+ (libraries
+  alcotest
+  opensearch
+  eio
+  eio.mock
+  eio_main
+  logs.fmt
+  tls-eio
+  mirage-crypto-rng-eio
+  fmt)
+ (package opensearch)
+ (preprocess
+  (pps ppx_here)))
