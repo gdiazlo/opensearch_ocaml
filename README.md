@@ -34,7 +34,7 @@ as possible.
 - [x] [Count](https://opensearch.org/docs/latest/api-reference/count/)
 - [x] [Document](https://opensearch.org/docs/latest/api-reference/document-apis/index/)
 - [ ] [Explain](https://opensearch.org/docs/latest/api-reference/explain/)
-- [ ] [Index](https://opensearch.org/docs/latest/api-reference/index-apis/index/)
+- [X] [Index](https://opensearch.org/docs/latest/api-reference/index-apis/index/)
 - [ ] [Ingest](https://opensearch.org/docs/latest/api-reference/ingest-apis/index/)
 - [ ] [Multi-search](https://opensearch.org/docs/latest/api-reference/multi-search/)
 - [ ] [Nodes](https://opensearch.org/docs/latest/api-reference/nodes-apis/index/)
