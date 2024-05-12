@@ -14,3 +14,4 @@
  Edit ,x/\(\*\*.+\*\)/ | fmt
  Edit ,s/	No//g
 
+Edit . | fmt
