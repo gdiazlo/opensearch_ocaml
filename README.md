@@ -44,6 +44,6 @@ as possible.
 - [ ] [Scripts](https://opensearch.org/docs/latest/api-reference/script-apis/index/)
 - [ ] [Scroll](https://opensearch.org/docs/latest/api-reference/scroll/)
 - [ ] [Search](https://opensearch.org/docs/latest/api-reference/search/)
-- [ ] [Search temapltes](https://opensearch.org/docs/latest/api-reference/search-template/)
+- [X] [Search temapltes](https://opensearch.org/docs/latest/api-reference/search-template/)
 - [ ] [Snapshots](https://opensearch.org/docs/latest/api-reference/snapshots/index/)
 - [ ] [Tasks](https://opensearch.org/docs/latest/api-reference/tasks/)
