@@ -43,16 +43,16 @@ end
 
 (**[https://opensearch.org/docs/latest/api-reference/cluster-api/cluster-decommission/]
 
-    The cluster decommission operation adds support decommissioning
-    based on awareness. It greatly benefits multi-zone deployments,
-    where awareness attributes, such as zones, can aid in applying new
-    upgrades to a cluster in a controlled fashion. This is especially
-    useful during outages, in which case, you can decommission the
-    unhealthy zone to prevent replication requests from stalling and
-    prevent your request backlog from becoming too large.
+   The cluster decommission operation adds support decommissioning
+   based on awareness. It greatly benefits multi-zone deployments,
+   where awareness attributes, such as zones, can aid in applying new
+   upgrades to a cluster in a controlled fashion. This is especially
+   useful during outages, in which case, you can decommission the
+   unhealthy zone to prevent replication requests from stalling and
+   prevent your request backlog from becoming too large.
 
-    For more information about allocation awareness, see Shard
-    allocation awareness. *)
+   For more information about allocation awareness, see Shard
+   allocation awareness. *)
 module Decommission = struct
   (** The name of awareness attribute, usually zone.*)
   let with_awareness_attribute_name str params =
