@@ -56,7 +56,7 @@ as possible.
 - [X] [Search](https://opensearch.org/docs/latest/api-reference/search/)
 - [X] [Search temapltes](https://opensearch.org/docs/latest/api-reference/search-template/)
 - [ ] [Snapshots](https://opensearch.org/docs/latest/api-reference/snapshots/index/)
-- [ ] [Tasks](https://opensearch.org/docs/latest/api-reference/tasks/)
+- [X] [Tasks](https://opensearch.org/docs/latest/api-reference/tasks/)
 
 OpenSearch has a lot of objects which conform the payload for a lot of APIs. We should implement builders for the most important ones:
 
@@ -70,4 +70,4 @@ A nice addition would be to add support to the stantard OpenSearch plugins APIs:
 - [ ] [Security plugin](https://opensearch.org/docs/latest/security/)
 - [ ] [Observability plugin](https://opensearch.org/docs/latest/observing-your-data/)
 - [ ] [Reporting](https://opensearch.org/docs/latest/reporting/)
-- [ ] [MAchine learning](https://opensearch.org/docs/latest/ml-commons-plugin/)
+- [ ] [Machine learning](https://opensearch.org/docs/latest/ml-commons-plugin/)
