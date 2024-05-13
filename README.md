@@ -47,7 +47,7 @@ as possible.
 - [X] [Index](https://opensearch.org/docs/latest/api-reference/index-apis/index/)
 - [X] [Ingest](https://opensearch.org/docs/latest/api-reference/ingest-apis/index/)
 - [ ] [Multi-search](https://opensearch.org/docs/latest/api-reference/multi-search/)
-- [ ] [Nodes](https://opensearch.org/docs/latest/api-reference/nodes-apis/index/)
+- [X] [Nodes](https://opensearch.org/docs/latest/api-reference/nodes-apis/index/)
 - [ ] [Profile](https://opensearch.org/docs/latest/api-reference/profile/)
 - [ ] [Ranking evaluation](https://opensearch.org/docs/latest/api-reference/rank-eval/)
 - [ ] [Remnote cluster](https://opensearch.org/docs/latest/api-reference/remote-info/)
