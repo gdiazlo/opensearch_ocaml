@@ -38,24 +38,24 @@ to implement the client. Our aim is to provide a client as complete
 as possible.
 
 
-- [ ] [Analyze API](https://opensearch.org/docs/latest/api-reference/analyze-apis/)
+- [X] [Analyze API](https://opensearch.org/docs/latest/api-reference/analyze-apis/)
 - [ ] [CAT API](https://opensearch.org/docs/latest/api-reference/cat/index/)
 - [x] [Cluster](https://opensearch.org/docs/latest/api-reference/cluster-api/index/)
 - [x] [Count](https://opensearch.org/docs/latest/api-reference/count/)
 - [x] [Document](https://opensearch.org/docs/latest/api-reference/document-apis/index/)
-- [ ] [Explain](https://opensearch.org/docs/latest/api-reference/explain/)
+- [X] [Explain](https://opensearch.org/docs/latest/api-reference/explain/)
 - [X] [Index](https://opensearch.org/docs/latest/api-reference/index-apis/index/)
 - [X] [Ingest](https://opensearch.org/docs/latest/api-reference/ingest-apis/index/)
-- [ ] [Multi-search](https://opensearch.org/docs/latest/api-reference/multi-search/)
+- [X] [Multi-search](https://opensearch.org/docs/latest/api-reference/multi-search/)
 - [X] [Nodes](https://opensearch.org/docs/latest/api-reference/nodes-apis/index/)
-- [ ] [Profile](https://opensearch.org/docs/latest/api-reference/profile/)
-- [ ] [Ranking evaluation](https://opensearch.org/docs/latest/api-reference/rank-eval/)
-- [ ] [Remnote cluster](https://opensearch.org/docs/latest/api-reference/remote-info/)
-- [ ] [Scripts](https://opensearch.org/docs/latest/api-reference/script-apis/index/)
-- [ ] [Scroll](https://opensearch.org/docs/latest/api-reference/scroll/)
+- [X] [Profile](https://opensearch.org/docs/latest/api-reference/profile/)
+- [X] [Ranking evaluation](https://opensearch.org/docs/latest/api-reference/rank-eval/)
+- [ ] [Remote cluster](https://opensearch.org/docs/latest/api-reference/remote-info/)
+- [X] [Scripts](https://opensearch.org/docs/latest/api-reference/script-apis/index/)
+- [X] [Scroll](https://opensearch.org/docs/latest/api-reference/scroll/)
 - [X] [Search](https://opensearch.org/docs/latest/api-reference/search/)
 - [X] [Search temapltes](https://opensearch.org/docs/latest/api-reference/search-template/)
-- [ ] [Snapshots](https://opensearch.org/docs/latest/api-reference/snapshots/index/)
+- [X] [Snapshots](https://opensearch.org/docs/latest/api-reference/snapshots/index/)
 - [X] [Tasks](https://opensearch.org/docs/latest/api-reference/tasks/)
 
 OpenSearch has a lot of objects which conform the payload for a lot of APIs. We should implement builders for the most important ones:
