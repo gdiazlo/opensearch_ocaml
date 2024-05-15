@@ -34,7 +34,7 @@ end
 
     You can also get details about a snapshot during and after snapshot
     creation. See Get snapshot status. *)
-module Get = struct
+module GetRepository = struct
   (** Whether to get information from the local node. Optional, defaults
       to false. *)
   let with_local b params = ("local", Param.bool_to_string b) :: params
@@ -60,7 +60,7 @@ end
 
     To learn more about repositories, see Register or update snapshot
     repository. *)
-module Delete = struct
+module DeleteRepository = struct
   let delete id params = new_req `DELETE (Fmt.str "/_snapshot/%s" id) params
 end
 
