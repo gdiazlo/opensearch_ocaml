@@ -50,7 +50,7 @@ as possible.
 - [X] [Nodes](https://opensearch.org/docs/latest/api-reference/nodes-apis/index/)
 - [X] [Profile](https://opensearch.org/docs/latest/api-reference/profile/)
 - [X] [Ranking evaluation](https://opensearch.org/docs/latest/api-reference/rank-eval/)
-- [ ] [Remote cluster](https://opensearch.org/docs/latest/api-reference/remote-info/)
+- [X] [Remote cluster](https://opensearch.org/docs/latest/api-reference/remote-info/)
 - [X] [Scripts](https://opensearch.org/docs/latest/api-reference/script-apis/index/)
 - [X] [Scroll](https://opensearch.org/docs/latest/api-reference/scroll/)
 - [X] [Search](https://opensearch.org/docs/latest/api-reference/search/)
