@@ -1,0 +1,55 @@
+ul li {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+}
+
+.cvss li {
+    display: flex; /* Use flexbox for horizontal layout */
+    margin-bottom: 10px; /* Add some spacing between list items */
+}
+
+.cvss li span:first-child {
+    font-weight: bold; /* Style the label */
+    font-size: 0.7em;
+    margin-right: 10px; /* Add some spacing between label and value */
+}
+
+.cvss li span:last-child {
+    font-size: 0.7em;
+    overflow: hidden; /* Truncate long values with an ellipsis */
+    white-space: nowrap; /* Prevent value from wrapping to the next line */
+    text-overflow: ellipsis; /* Add an ellipsis (...) for truncated values */
+}
+
+summary {
+    text-align: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    font-size: 0.7em;
+    font-weight: bold;
+    color: white;
+    border-radius: 0.25em;
+}
+
+.badge-danger {
+    background-color: #dc3545;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+}
+
+.badge-info {
+    background-color: #17a2b8;
+}
+
+.badge-success {
+    background-color: #28a745;
+}
+
+.badge-secondary {
+    background-color: #6c757d;
+}

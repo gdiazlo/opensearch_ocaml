@@ -1,0 +1,4 @@
+(executable
+  (name se)
+  (libraries opensearch dream dream-html yojson fmt eio eio_main lwt lwt.unix)
+  (preprocess (pps lwt_ppx)))
