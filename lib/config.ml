@@ -17,3 +17,7 @@ let with_password password config = { config with password }
 let with_user user config = { config with user }
 let with_hosts hosts config = { config with hosts }
 let with_retries retries config = { config with retries }
+
+let string_to_host_list str =
+  String.split_on_char ',' str |> List.map (fun s -> Uri.of_string s)
+;;

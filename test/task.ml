@@ -25,7 +25,6 @@ let get_tasks (do_req : requester) =
   ()
 ;;
 
-
 let () =
   Eio_main.run
   @@ fun env ->
@@ -48,8 +47,5 @@ let () =
   let do_req = MyClient.do_req sw in
   Alcotest.run
     "opensearch"
-    [ ( "opensearch client"
-      , [ test_case "get_tasks" get_tasks do_req
-        ] )
-    ]
+    [ "opensearch client", [ test_case "get_tasks" get_tasks do_req ] ]
 ;;

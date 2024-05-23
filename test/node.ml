@@ -82,9 +82,9 @@ let () =
     "opensearch"
     [ ( "opensearch client"
       , [ test_case "node_info" node_info do_req
-      ; test_case "node_stats" node_stats do_req
-      ; test_case "node_hotthread" node_hotthread do_req
-      ; test_case "node_usage" node_usage do_req
+        ; test_case "node_stats" node_stats do_req
+        ; test_case "node_hotthread" node_hotthread do_req
+        ; test_case "node_usage" node_usage do_req
         ] )
     ]
 ;;
