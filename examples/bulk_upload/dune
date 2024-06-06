@@ -1,5 +1,5 @@
 (executable
  (name bu)
- (libraries opensearch yojson fmt eio eio_main mirage-crypto-rng-eio piaf)
+ (libraries opensearch yojson fmt eio eio_main mirage-crypto-rng-eio cohttp-eio)
  (preprocess
   (pps lwt_ppx)))

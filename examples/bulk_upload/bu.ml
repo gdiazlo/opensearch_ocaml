@@ -25,30 +25,26 @@ let make_bulk_payload files =
     let doc = Eio.Path.load file |> Yojson.Safe.from_string in
     with_create index ~id doc)
   |> String.concat "\n"
-  |> fun s -> s ^ "\n" |> Piaf.Body.of_string
+  |> fun s -> s ^ "\n"
 ;;
 
-let auth_header user password =
-  let credentials = Printf.sprintf "%s:%s" user password in
-  let encoded_credentials = Base64.encode_exn credentials in
-  "Authorization", "Basic " ^ encoded_credentials
-;;
 
-type config =
-  { cluster : Uri.t list
-  ; headers : (string * string) list
-  ; config : Piaf.Config.t
-  }
+let os_client env =
+  let open Opensearch in
+  let module MyConfig = struct
+    let config =
+      Opensearch.Config.(
+        default
+        |> with_password (Sys.getenv "OPENSEARCH_PASSWORD")
+        |> with_user (Sys.getenv "OPENSEARCH_USER")
+        |> with_hosts (string_to_host_list (Sys.getenv "OPENSEARCH_HOSTS")))
+    ;;
 
-let setup =
-  let user = Sys.getenv "OPENSEARCH_USER" in
-  let password = Sys.getenv "OPENSEARCH_PASSWORD" in
-  let cluster =
-    String.split_on_char ',' (Sys.getenv "OPENSEARCH_HOSTS") |> List.map Uri.of_string
+    let client = Transport.make env#net
+  end
   in
-  let headers = [ auth_header user password; "Content-Type", "application/json" ] in
-  let config = { Piaf.Config.default with allow_insecure = true } in
-  { cluster; headers; config }
+  let module MyClient = Client.Make (MyConfig) in
+  MyClient.do_req
 ;;
 
 let split_at n lst =
@@ -76,38 +72,30 @@ let rec retry n f =
 let () =
   Eio_main.run
   @@ fun env ->
+    Mirage_crypto_rng_eio.run (module Mirage_crypto_rng.Fortuna) env
+    @@ fun () ->
   Eio.Switch.run
   @@ fun sw ->
   let ( / ) = Eio.Path.( / ) in
   let path = Eio.Stdenv.fs env / "/tmp" / "cvelistV5-main" in
   let files = list_files sw path in
-  let req = Opensearch.Api.Document.Bulk.post [] in
-  let conf = setup in
+  let client = os_client env in
   let rec bulk_insert files =
     match files with
     | [] -> ()
     | lst ->
       let chunk, rest = split_at 200 lst in
-      let body = make_bulk_payload chunk in
+      let body = make_bulk_payload chunk |> Cohttp_eio.Body.of_string in
       let params =
         Opensearch.Param.empty |> Opensearch.Api.Document.Bulk.with_refresh "wait_for"
       in
-      let req = Uri.with_path (List.hd conf.cluster) ("/" ^ req.path) in
-      let req_params = Uri.with_query' req params in
       let res =
         retry 3
         @@ fun () ->
-        Piaf.Client.Oneshot.post
-          ~config:conf.config
-          ~headers:conf.headers
-          ~body
-          ~sw
-          env
-          req_params
-      in
+          client sw ~body (Opensearch.Api.Document.Bulk.post params) in
       (match res with
        | Ok _ -> ()
-       | Error e -> Eio.traceln "Error: %a\n" Piaf.Error.pp_hum e);
+       | Error e -> Eio.traceln "Error: %s\n" e);
       Eio.traceln "Inserted %d files, remain %d\n" (List.length chunk) (List.length rest);
       bulk_insert rest
   in
